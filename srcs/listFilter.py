@@ -221,6 +221,18 @@ if __name__ == '__main__':
     filtered_class = filter_global_blacklist(filtered_class, 'd')
     filtered_class = filter_whitelist(filtered_class, 'a', 3)
     """
+    """
+    Guess for 1/27
+    
+    # Atone
+    filtered_class = filter_global_blacklist(filtered_class, 'a')
+    filtered_class = filter_global_whitelist(filtered_class, 't')
+    filtered_class = filter_global_whitelist(filtered_class, 'o')
+    filtered_class = filter_whitelist(filtered_class, 'n', 4)
+    filtered_class = filter_global_blacklist(filtered_class, 'e')
+    filtered_class = filter_blacklist(filtered_class, 't', 2)
+    filtered_class = filter_blacklist(filtered_class, 'o', 3)
+    """
     for word in filtered_class:
         print(word.word)
 
