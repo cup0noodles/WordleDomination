@@ -159,14 +159,16 @@ if __name__ == '__main__':
     filtered_class = []
     convert_array_class(filtered)
     """
-    Solution for 1/24 - 3 tries
-    # From Guess 1
-    filtered_class = filter_global_blacklist(filtered_class, 'a')
+    # Solution for 1/24 - 3 tries
+    # From Guess 1 "atone"
+    filtered_class = filter_global_whitelist(filtered_class, 'a')
     filtered_class = filter_global_blacklist(filtered_class, 't')
     filtered_class = filter_global_blacklist(filtered_class, 'e')
-    filtered_class = filter_whitelist(filtered_class, 'o', 3)
-    filtered_class = filter_blacklist(filtered_class, 'n', 4)
-    # From Guess 2
+    filtered_class = filter_global_blacklist(filtered_class, 'o')
+    filtered_class = filter_global_blacklist(filtered_class, 'n')
+    filtered_class = filter_blacklist(filtered_class, 'a', 1)
+    
+    # From Guess 2 "scorn"
     filtered_class = filter_global_blacklist(filtered_class, 's')
     filtered_class = filter_global_blacklist(filtered_class, 'c')
     filtered_class = filter_global_blacklist(filtered_class, 'r')
@@ -195,13 +197,37 @@ if __name__ == '__main__':
     filtered_class = filter_global_whitelist(filtered_class, 'u')
     filtered_class = filter_blacklist(filtered_class, 'u', 4)
     """
+
+    """
+    Guess for 1/26
+    
+    # Atone
+    filtered_class = filter_global_whitelist(filtered_class, 'a')
+    filtered_class = filter_global_blacklist(filtered_class, 't')
+    filtered_class = filter_global_blacklist(filtered_class, 'e')
+    filtered_class = filter_global_blacklist(filtered_class, 'o')
+    filtered_class = filter_global_blacklist(filtered_class, 'n')
+    filtered_class = filter_blacklist(filtered_class, 'a', 1)
+    # Basil
+    filtered_class = filter_global_blacklist(filtered_class, 'b')
+    filtered_class = filter_global_blacklist(filtered_class, 's')
+    filtered_class = filter_global_blacklist(filtered_class, 'i')
+    filtered_class = filter_global_blacklist(filtered_class, 'l')
+    filtered_class = filter_blacklist(filtered_class, 'a', 2)
+    # Fraud
+    filtered_class = filter_global_blacklist(filtered_class, 'f')
+    filtered_class = filter_global_blacklist(filtered_class, 'r')
+    filtered_class = filter_global_blacklist(filtered_class, 'u')
+    filtered_class = filter_global_blacklist(filtered_class, 'd')
+    filtered_class = filter_whitelist(filtered_class, 'a', 3)
+    """
     for word in filtered_class:
         print(word.word)
 
     print(len(filtered_class))
     # scores = score_array()
     # print(scores)
-    # score_dict = {}
+    score_dict = {}
     # create_score_dict(scores)
     # print(score_dict)
 
