@@ -7,6 +7,7 @@ This script takes an input file with a list of words, pulls out only 5-letter
 words without repeating characters and writes it to a new file.
 """
 import math
+import random
 
 
 class Words:
@@ -47,6 +48,12 @@ def convert_array_class(word_array):
 
 
 def filter_blacklist(word_class, letter, position):
+    """
+    depreciated
+    param word_class: (array) An array of word objects
+    :param letter: (str) Single letter string
+    :param position: (int) Position of letter (1-5)
+    """
     filtered_word_class = []
     for i in word_class:
         letter_check = i.return_letter(position)
@@ -55,7 +62,15 @@ def filter_blacklist(word_class, letter, position):
     return filtered_word_class
 
 
+def filter_grey(word_class, letter):
+    return filter_global_blacklist(word_class, letter)
+
+
 def filter_global_blacklist(word_class, letter):
+    """
+    param word_class: (array) An array of word objects
+    :param letter: (str) Single letter string
+    """
     filtered_word_class = []
     for i in word_class:
         for j in range(1, 6):
@@ -72,8 +87,9 @@ def filter_global_blacklist(word_class, letter):
 
 def filter_whitelist(word_class, letter, position):
     """
-
-    :return:
+    param word_class: (array) An array of word objects
+    :param letter: (str) Single letter string
+    :param position: (int) Position of letter (1-5)
     """
     filtered_word_class = []
     for i in word_class:
@@ -83,7 +99,16 @@ def filter_whitelist(word_class, letter, position):
     return filtered_word_class
 
 
+def filter_green(word_class, letter, position):
+    return filter_whitelist(word_class, letter, position)
+
+
 def filter_global_whitelist(word_class, letter):
+    """
+    depreciated
+    param word_class: (array) An array of word objects
+    :param letter: (str) Single letter string
+    """
     filtered_word_class = []
     for i in word_class:
         for j in range(1, 6):
@@ -93,6 +118,21 @@ def filter_global_whitelist(word_class, letter):
                 break
             else:
                 continue
+
+    return filtered_word_class
+
+
+def filter_yellow(word_class, letter, position):
+    """
+    For Yellow Letters
+    :param word_class: (array) An array of word objects
+    :param letter: (str) Single letter string
+    :param position: (int) Position of letter (1-5)
+    """
+    # Global Whitelist
+    filtered_word_class = filter_global_whitelist(word_class, letter)
+    # Positional blacklist
+    filtered_word_class = filter_blacklist(filtered_word_class, letter, position)
 
     return filtered_word_class
 
@@ -232,6 +272,54 @@ if __name__ == '__main__':
     filtered_class = filter_global_blacklist(filtered_class, 'e')
     filtered_class = filter_blacklist(filtered_class, 't', 2)
     filtered_class = filter_blacklist(filtered_class, 'o', 3)
+    """
+
+    """
+    Guess for 1/28
+    
+    filtered_class = filter_global_blacklist(filtered_class, 'a')
+    filtered_class = filter_global_blacklist(filtered_class, 't')
+    filtered_class = filter_global_blacklist(filtered_class, 'o')
+    filtered_class = filter_global_blacklist(filtered_class, 'n')
+    filtered_class = filter_global_whitelist(filtered_class, 'e')
+    filtered_class = filter_blacklist(filtered_class, 'e', 5)
+
+    filtered_class = filter_global_blacklist(filtered_class, 'h')
+    filtered_class = filter_whitelist(filtered_class, 'e', 2)
+    filtered_class = filter_global_blacklist(filtered_class, 'i')
+    filtered_class = filter_blacklist(filtered_class, 'r', 4)
+    filtered_class = filter_global_whitelist(filtered_class, 'r')
+    filtered_class = filter_global_blacklist(filtered_class, 's')
+
+    filtered_class = filter_blacklist(filtered_class, 'r', 5)
+    filtered_class = filter_global_blacklist(filtered_class, 'l')
+    filtered_class = filter_global_blacklist(filtered_class, 'm')
+    filtered_class = filter_global_blacklist(filtered_class, 'u')
+    
+
+    filtered_class = filter_grey(filtered_class, 'n')
+    filtered_class = filter_grey(filtered_class, 'e')
+    filtered_class = filter_green(filtered_class, 'a', 1)
+    filtered_class = filter_green(filtered_class, 'o', 3)
+    filtered_class = filter_yellow(filtered_class, 't', 2)
+    filtered_class = filter_green(filtered_class, 't', 5)
+    filtered_class = filter_grey(filtered_class, 'b')
+    filtered_class = filter_grey(filtered_class, 'r')
+    
+    filtered_class = filter_yellow(filtered_class, 'a', 1)
+    filtered_class = filter_grey(filtered_class, 't')
+    filtered_class = filter_grey(filtered_class, 'o')
+    filtered_class = filter_grey(filtered_class, 'n')
+    filtered_class = filter_green(filtered_class, 'e', 5)
+    filtered_class = filter_green(filtered_class, 'a', 3)
+    filtered_class = filter_grey(filtered_class, 'c')
+    filtered_class = filter_grey(filtered_class, 'h')
+    filtered_class = filter_grey(filtered_class, 's')
+    filtered_class = filter_green(filtered_class, 'r', 2)
+    filtered_class = filter_grey(filtered_class, 'b')
+    filtered_class = filter_grey(filtered_class, 'k')
+    filtered_class = filter_grey(filtered_class, 'g')
+    filtered_class = filter_grey(filtered_class, 'd')
     """
     for word in filtered_class:
         print(word.word)
