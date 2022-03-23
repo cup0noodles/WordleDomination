@@ -321,6 +321,17 @@ if __name__ == '__main__':
     filtered_class = filter_grey(filtered_class, 'g')
     filtered_class = filter_grey(filtered_class, 'd')
     """
+    filtered_class = filter_green(filtered_class, 'a', 2)
+    filtered_class = filter_green(filtered_class, 't', 3)
+    filtered_class = filter_yellow(filtered_class, 'h', 1)
+    filtered_class = filter_grey(filtered_class, 'o')
+    filtered_class = filter_grey(filtered_class, 'n')
+    filtered_class = filter_grey(filtered_class, 'e')
+    filtered_class = filter_grey(filtered_class, 'f')
+    filtered_class = filter_grey(filtered_class, 'y')
+    filtered_class = filter_grey(filtered_class, 't')
+    filtered_class = filter_grey(filtered_class, 'r')
+
     for word in filtered_class:
         print(word.word)
 
